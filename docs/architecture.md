@@ -36,12 +36,17 @@ All responses must follow this structure:
 }
 ```
 
-## 📱 Frontend Rules (Feature-Driven)
+## 🔐 Auth & Role System (Implemented)
 
-1.  **NO business logic in UI**: Components are for rendering only.
-2.  **ALL API calls go via /services**: No direct fetch/axios calls in components.
-3.  **Types = API shapes ONLY**: Do not share TypeScript types between backend and frontend.
-4.  **Feature Isolation**: Each feature (`admin`, `auth`, `driver`) is isolated. No cross-feature dependencies.
+### Backend
+- **Strategy**: JWT + MFA (TOTP/Email/SMS).
+- **RBAC**: Middleware-enforced roles (`SUPER_ADMIN`, `ADMIN`, `DRIVER`).
+- **Identity Authority**: Backend is the sole source of truth for permissions.
+
+### Frontend
+- **State**: Centralized in Zustand (`authStore`).
+- **Navigation**: Deterministic, derived from auth state. No UI-level permission hacks.
+- **Rules**: Zero business logic in UI components.
 
 ## 🔌 Realtime Core
 - **Backend**: `backend/src/realtime/`

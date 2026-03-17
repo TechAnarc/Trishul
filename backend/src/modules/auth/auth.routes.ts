@@ -1,35 +1,32 @@
 import { Router } from 'express';
-import {
-  authController,
-  loginValidation,
-  registerValidation,
-  mfaVerifyValidation,
-} from './auth.controller';
+import { authController } from './auth.controller';
 import { authenticate } from '../../middleware/authMiddleware';
-import { authRateLimiter } from '../../middleware/rateLimiter';
+import { validate } from '../../middleware/validate';
+import {
+  loginSchema,
+  registerSchema,
+  mfaVerifySchema,
+  setupTotpSchema,
+  refreshTokenSchema,
+} from './auth.schema';
+import { catchAsync } from '../../utils/catchAsync';
 
 const router = Router();
 
 // Public routes
-router.post('/login', authRateLimiter, loginValidation, authController.login.bind(authController));
-router.post(
-  '/register',
-  authRateLimiter,
-  registerValidation,
-  authController.register.bind(authController)
-);
-router.post(
-  '/mfa/verify',
-  authRateLimiter,
-  mfaVerifyValidation,
-  authController.verifyMfa.bind(authController)
-);
-router.post('/refresh', authController.refreshToken.bind(authController));
+router.post('/register', validate(registerSchema), catchAsync(authController.register));
+router.post('/login', validate(loginSchema), catchAsync(authController.login));
+router.post('/mfa/verify', validate(mfaVerifySchema), catchAsync(authController.verifyMfa));
+router.post('/refresh', validate(refreshTokenSchema), catchAsync(authController.refreshToken));
 
 // Protected routes
-router.post('/logout', authenticate, authController.logout.bind(authController));
-router.get('/me', authenticate, authController.me.bind(authController));
-router.post('/mfa/setup/totp', authenticate, authController.setupTotp.bind(authController));
-router.post('/mfa/confirm/totp', authenticate, authController.confirmTotp.bind(authController));
+router.use(authenticate);
+
+router.post('/logout', catchAsync(authController.logout));
+router.get('/me', catchAsync(authController.me));
+
+// MFA Setup
+router.post('/mfa/setup-totp', catchAsync(authController.setupTotp));
+router.post('/mfa/confirm-totp', validate(setupTotpSchema), catchAsync(authController.confirmTotp));
 
 export default router;

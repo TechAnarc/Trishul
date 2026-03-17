@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as SecureStore from 'expo-secure-store';
+import { setItemAsync, getItemAsync, deleteItemAsync } from '../utils/storage';
 import { API_BASE_URL, STORAGE_KEYS } from '../constants';
 
 const api = axios.create({
@@ -13,7 +13,7 @@ const api = axios.create({
 // Request interceptor - attach access token
 api.interceptors.request.use(
   async (config) => {
-    const token = await SecureStore.getItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
+    const token = await getItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -32,22 +32,22 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = await SecureStore.getItemAsync(STORAGE_KEYS.REFRESH_TOKEN);
+        const refreshToken = await getItemAsync(STORAGE_KEYS.REFRESH_TOKEN);
         if (!refreshToken) throw new Error('No refresh token');
 
         const response = await axios.post(`${API_BASE_URL}/auth/refresh`, { refreshToken });
         const { accessToken, refreshToken: newRefreshToken } = response.data.data;
 
-        await SecureStore.setItemAsync(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
-        await SecureStore.setItemAsync(STORAGE_KEYS.REFRESH_TOKEN, newRefreshToken);
+        await setItemAsync(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+        await setItemAsync(STORAGE_KEYS.REFRESH_TOKEN, newRefreshToken);
 
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return api(originalRequest);
       } catch {
         // Refresh failed - clear storage and redirect to login
-        await SecureStore.deleteItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
-        await SecureStore.deleteItemAsync(STORAGE_KEYS.REFRESH_TOKEN);
-        await SecureStore.deleteItemAsync(STORAGE_KEYS.USER_PROFILE);
+        await deleteItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
+        await deleteItemAsync(STORAGE_KEYS.REFRESH_TOKEN);
+        await deleteItemAsync(STORAGE_KEYS.USER_PROFILE);
         // Navigation will handle redirect via auth state change
       }
     }

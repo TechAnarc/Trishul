@@ -86,7 +86,7 @@ model User {
   isActive     Boolean    @default(true)
   isMfaEnabled Boolean    @default(false)
   mfaMethod    MfaMethod?
-  mfaSecret    String?    // Encrypted TOTP secret
+  mfaSecret    String? // Encrypted TOTP secret
   lastLoginAt  DateTime?
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
@@ -112,49 +112,61 @@ model Driver {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
+  adminId String
+
   // Relations
-  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user            User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  admin           Admin               @relation(fields: [adminId], references: [id], onDelete: Cascade)
   assignedVehicle VehicleAssignment[]
-  trips          Trip[]
-  expenses       Expense[]
+  trips           Trip[]
+  expenses        Expense[]
 
   @@index([userId])
   @@map("drivers")
 }
 
 model Admin {
-  id        String   @id @default(uuid())
-  userId    String   @unique
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  userId     String   @unique
+  agencyName String
+  createdAt  DateTime @default(now())
 
   // Relations
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  drivers  Driver[]
+  vehicles Vehicle[]
+  trips    Trip[]
+  expenses Expense[]
+  invoices Invoice[]
 
   @@map("admins")
 }
 
 model Vehicle {
-  id               String         @id @default(uuid())
-  vehicleNumber    String         @unique
-  model            String
-  make             String?
-  year             Int?
-  color            String?
-  fuelType         FuelType       @default(DIESEL)
-  seatingCapacity  Int?
-  status           VehicleStatus  @default(AVAILABLE)
-  insuranceExpiry  DateTime?
-  permitExpiry     DateTime?
-  fitnessExpiry    DateTime?
-  pollutionExpiry  DateTime?
-  odometerReading  Float          @default(0) // km
-  ratePerKm        Float          @default(0)
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  id              String        @id @default(uuid())
+  vehicleNumber   String        @unique
+  model           String
+  make            String?
+  year            Int?
+  color           String?
+  fuelType        FuelType      @default(DIESEL)
+  seatingCapacity Int?
+  status          VehicleStatus @default(AVAILABLE)
+  insuranceExpiry DateTime?
+  permitExpiry    DateTime?
+  fitnessExpiry   DateTime?
+  pollutionExpiry DateTime?
+  odometerReading Float         @default(0) // km
+  ratePerKm       Float         @default(0)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  adminId String
 
   // Relations
-  assignments      VehicleAssignment[]
-  trips            Trip[]
+  admin       Admin               @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  assignments VehicleAssignment[]
+  trips       Trip[]
 
   @@index([vehicleNumber])
   @@index([status])
@@ -170,8 +182,8 @@ model VehicleAssignment {
   isActive   Boolean   @default(true)
 
   // Relations
-  driver     Driver    @relation(fields: [driverId], references: [id])
-  vehicle    Vehicle   @relation(fields: [vehicleId], references: [id])
+  driver  Driver  @relation(fields: [driverId], references: [id])
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
 
   @@index([driverId])
   @@index([vehicleId])
@@ -179,31 +191,34 @@ model VehicleAssignment {
 }
 
 model Trip {
-  id                String      @id @default(uuid())
-  tripCode          String      @unique @default(cuid()) // For public tracking URL
+  id                String     @id @default(uuid())
+  tripCode          String     @unique @default(cuid()) // For public tracking URL
   driverId          String
   vehicleId         String
   clientName        String?
   clientPhone       String?
   startLocation     String
   endLocation       String
-  waypoints         Json?       // Array of intermediate stops
-  distance          Float?      // km (actual, filled after trip)
-  estimatedDistance Float?      // km (estimated before trip)
-  status            TripStatus  @default(SCHEDULED)
+  waypoints         Json? // Array of intermediate stops
+  distance          Float? // km (actual, filled after trip)
+  estimatedDistance Float? // km (estimated before trip)
+  status            TripStatus @default(SCHEDULED)
   startTime         DateTime?
   endTime           DateTime?
   scheduledAt       DateTime?
   notes             String?
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  adminId String
 
   // Relations
-  driver            Driver      @relation(fields: [driverId], references: [id])
-  vehicle           Vehicle     @relation(fields: [vehicleId], references: [id])
-  expenses          Expense[]
-  invoice           Invoice?
-  locationLogs      LocationLog[]
+  admin        Admin         @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  driver       Driver        @relation(fields: [driverId], references: [id])
+  vehicle      Vehicle       @relation(fields: [vehicleId], references: [id])
+  expenses     Expense[]
+  invoice      Invoice?
+  locationLogs LocationLog[]
 
   @@index([driverId])
   @@index([vehicleId])
@@ -223,7 +238,7 @@ model LocationLog {
   timestamp DateTime @default(now())
 
   // Relations
-  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
 
   @@index([tripId])
   @@index([timestamp])
@@ -231,20 +246,23 @@ model LocationLog {
 }
 
 model Expense {
-  id        String          @id @default(uuid())
-  tripId    String
-  driverId  String
-  category  ExpenseCategory
-  amount    Float
-  note      String?
+  id         String          @id @default(uuid())
+  tripId     String
+  driverId   String
+  category   ExpenseCategory
+  amount     Float
+  note       String?
   receiptUrl String?
-  isVerified Boolean        @default(false)
-  createdAt DateTime        @default(now())
-  updatedAt DateTime        @updatedAt
+  isVerified Boolean         @default(false)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+
+  adminId String
 
   // Relations
-  trip      Trip            @relation(fields: [tripId], references: [id], onDelete: Cascade)
-  driver    Driver          @relation(fields: [driverId], references: [id])
+  admin  Admin  @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  driver Driver @relation(fields: [driverId], references: [id])
 
   @@index([tripId])
   @@index([driverId])
@@ -253,31 +271,34 @@ model Expense {
 }
 
 model Invoice {
-  id             String        @id @default(uuid())
-  invoiceNumber  String        @unique @default(cuid())
-  tripId         String        @unique
-  clientName     String?
-  clientEmail    String?
-  clientPhone    String?
-  totalDistance  Float
-  ratePerKm      Float
-  baseFare       Float
-  tollCharges    Float         @default(0)
-  otherCharges   Float         @default(0)
-  discount       Float         @default(0)
-  tax            Float         @default(0)
-  totalFare      Float
-  status         InvoiceStatus @default(DRAFT)
-  dueDate        DateTime?
-  sentAt         DateTime?
-  paidAt         DateTime?
-  notes          String?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  id            String        @id @default(uuid())
+  invoiceNumber String        @unique @default(cuid())
+  tripId        String        @unique
+  clientName    String?
+  clientEmail   String?
+  clientPhone   String?
+  totalDistance Float
+  ratePerKm     Float
+  baseFare      Float
+  tollCharges   Float         @default(0)
+  otherCharges  Float         @default(0)
+  discount      Float         @default(0)
+  tax           Float         @default(0)
+  totalFare     Float
+  status        InvoiceStatus @default(DRAFT)
+  dueDate       DateTime?
+  sentAt        DateTime?
+  paidAt        DateTime?
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  adminId String
 
   // Relations
-  trip           Trip          @relation(fields: [tripId], references: [id])
-  payments       Payment[]
+  admin    Admin     @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  trip     Trip      @relation(fields: [tripId], references: [id])
+  payments Payment[]
 
   @@index([status])
   @@index([invoiceNumber])
@@ -288,7 +309,7 @@ model Payment {
   id            String        @id @default(uuid())
   invoiceId     String
   amount        Float
-  method        String        // cash, upi, card, bank_transfer
+  method        String // cash, upi, card, bank_transfer
   transactionId String?
   status        PaymentStatus @default(PENDING)
   paidAt        DateTime?
@@ -296,23 +317,23 @@ model Payment {
   createdAt     DateTime      @default(now())
 
   // Relations
-  invoice       Invoice       @relation(fields: [invoiceId], references: [id])
+  invoice Invoice @relation(fields: [invoiceId], references: [id])
 
   @@index([invoiceId])
   @@map("payments")
 }
 
 model AuditLog {
-  id         String   @id @default(uuid())
-  userId     String?
-  action     String
-  entity     String
-  entityId   String?
-  oldValue   Json?
-  newValue   Json?
-  ipAddress  String?
-  userAgent  String?
-  createdAt  DateTime @default(now())
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  oldValue  Json?
+  newValue  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
 
   @@index([userId])
   @@index([entity, entityId])

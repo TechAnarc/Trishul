@@ -57,3 +57,5 @@ export const TRIP_STATUS = {
   CANCELLED: 'CANCELLED',
   PAUSED: 'PAUSED',
 } as const;
+
+export type TripStatus = (typeof TRIP_STATUS)[keyof typeof TRIP_STATUS];

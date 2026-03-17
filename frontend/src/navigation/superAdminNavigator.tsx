@@ -1,11 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AdminDashboard from '../features/admin/dashboard/AdminDashboard';
+import SuperAdminDashboard from '../features/super-admin/dashboard/SuperAdminDashboard';
 import { COLORS } from '../theme';
 
 const Stack = createNativeStackNavigator();
 
-const AdminNavigator: React.FC = () => {
+const SuperAdminNavigator: React.FC = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -13,9 +13,9 @@ const AdminNavigator: React.FC = () => {
         contentStyle: { backgroundColor: COLORS.background },
       }}
     >
-      <Stack.Screen name="AdminDashboard" component={AdminDashboard} />
+      <Stack.Screen name="SuperAdminDashboard" component={SuperAdminDashboard} />
     </Stack.Navigator>
   );
 };
 
-export default AdminNavigator;
+export default SuperAdminNavigator;

@@ -1,5 +1,5 @@
 import api from './api';
-import * as SecureStore from 'expo-secure-store';
+import { setItemAsync, getItemAsync, deleteItemAsync } from '../utils/storage';
 import { STORAGE_KEYS } from '../constants';
 
 export interface LoginPayload {
@@ -58,9 +58,9 @@ const authService = {
     } catch {
       // Ignore API errors on logout
     } finally {
-      await SecureStore.deleteItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
-      await SecureStore.deleteItemAsync(STORAGE_KEYS.REFRESH_TOKEN);
-      await SecureStore.deleteItemAsync(STORAGE_KEYS.USER_PROFILE);
+      await deleteItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
+      await deleteItemAsync(STORAGE_KEYS.REFRESH_TOKEN);
+      await deleteItemAsync(STORAGE_KEYS.USER_PROFILE);
     }
   },
 
@@ -73,18 +73,18 @@ const authService = {
     tokens: { accessToken: string; refreshToken: string },
     user: AuthUser
   ): Promise<void> {
-    await SecureStore.setItemAsync(STORAGE_KEYS.ACCESS_TOKEN, tokens.accessToken);
-    await SecureStore.setItemAsync(STORAGE_KEYS.REFRESH_TOKEN, tokens.refreshToken);
-    await SecureStore.setItemAsync(STORAGE_KEYS.USER_PROFILE, JSON.stringify(user));
+    await setItemAsync(STORAGE_KEYS.ACCESS_TOKEN, tokens.accessToken);
+    await setItemAsync(STORAGE_KEYS.REFRESH_TOKEN, tokens.refreshToken);
+    await setItemAsync(STORAGE_KEYS.USER_PROFILE, JSON.stringify(user));
   },
 
   async getStoredUser(): Promise<AuthUser | null> {
-    const raw = await SecureStore.getItemAsync(STORAGE_KEYS.USER_PROFILE);
+    const raw = await getItemAsync(STORAGE_KEYS.USER_PROFILE);
     return raw ? JSON.parse(raw) : null;
   },
 
   async isAuthenticated(): Promise<boolean> {
-    const token = await SecureStore.getItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
+    const token = await getItemAsync(STORAGE_KEYS.ACCESS_TOKEN);
     return !!token;
   },
 };

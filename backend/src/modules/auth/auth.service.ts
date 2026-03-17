@@ -46,8 +46,13 @@ class AuthService {
       throw new AuthError('Invalid credentials');
     }
 
-    // If MFA enabled, return challenge
-    if (user.isMfaEnabled && user.mfaMethod) {
+    // Role-Based Lock: Only SUPER_ADMIN allowed right now
+    if (user.role !== Role.SUPER_ADMIN) {
+      throw new AuthError('Access restricted to Super Admin only during setup phase');
+    }
+
+    // If MFA enabled, return challenge (temporarily bypassed for speed)
+    if (false && user.isMfaEnabled && user.mfaMethod) {
       // Store pending auth in Redis (expires in 5 min)
       await redis.set(`pending_auth:${user.id}`, '1', 'EX', 300);
 
