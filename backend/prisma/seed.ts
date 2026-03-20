@@ -6,7 +6,7 @@
  * Run: npm run seed (from apps/backend)
  */
 
-import { PrismaClient, Role, MfaMethod } from '@prisma/client';
+import { PrismaClient, Role } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -46,7 +46,7 @@ async function seedSuperAdmin(): Promise<void> {
 
   const hashedPassword = await bcrypt.hash(password, 12);
 
-  const user = await prisma.user.create({
+  await prisma.user.create({
     data: {
       name,
       email: email.toLowerCase(),
