@@ -1,9 +1,9 @@
 // ── API ───────────────────────────────────────────────────────────────────
-export const API_BASE_URL = __DEV__
-  ? 'http://localhost:5000/api/v1'
-  : 'https://api.trishultravels.com/api/v1';
+export const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL 
+  || (__DEV__ ? 'http://localhost:5000/api/v1' : 'https://trishul-udu2.onrender.com/api/v1');
 
-export const SOCKET_URL = __DEV__ ? 'http://localhost:5000' : 'https://api.trishultravels.com';
+export const SOCKET_URL = process.env.EXPO_PUBLIC_SOCKET_URL 
+  || (__DEV__ ? 'http://localhost:5000' : 'https://trishul-udu2.onrender.com');
 
 // ── App ───────────────────────────────────────────────────────────────────
 export const APP_NAME = 'Trishul';
