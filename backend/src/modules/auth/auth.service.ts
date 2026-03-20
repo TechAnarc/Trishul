@@ -52,7 +52,8 @@ class AuthService {
     }
 
     // If MFA enabled, return challenge (temporarily bypassed for speed)
-    if (false && user.isMfaEnabled && user.mfaMethod) {
+    // NOTE: false && user.isMfaEnabled is always false, but we keep the block for future use
+    if (user.isMfaEnabled && user.mfaMethod) {
       const { id, email, name, phone, mfaMethod } = user;
       
       // Store pending auth in Redis (expires in 5 min)
