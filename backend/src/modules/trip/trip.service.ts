@@ -14,10 +14,11 @@ export class TripService {
     [TripStatus.CANCELLED]: [], // Terminal state
   };
 
-  async createTrip(data: CreateTripInput, _adminId: string): Promise<Trip> {
+  async createTrip(data: CreateTripInput, adminId: string): Promise<Trip> {
     // Basic verification of driver and vehicle would happen here or in repository
     const trip = await tripRepository.create({
       ...data,
+      adminId,
       status: TripStatus.SCHEDULED,
     });
 

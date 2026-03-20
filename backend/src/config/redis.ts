@@ -14,7 +14,7 @@
 export const redis = {
   store: new Map<string, { value: string; expiry?: number }>(),
 
-  async set(key: string, value: string, mode?: string, ttl?: number): Promise<void> {
+  async set(key: string, value: string, _mode?: string, ttl?: number): Promise<void> {
     const expiry = ttl ? Date.now() + ttl * 1000 : undefined;
     this.store.set(key, { value, expiry });
   },

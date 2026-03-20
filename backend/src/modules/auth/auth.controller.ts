@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { authService } from './auth.service';
 import { AuthRequest } from '../../middleware/authMiddleware';
-import { ValidationError } from '../../middleware/errorHandler';
 
 class AuthController {
   async login(req: Request, res: Response): Promise<void> {

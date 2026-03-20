@@ -66,7 +66,7 @@ class AuthService {
       return {
         requiresMfa: true,
         userId: user.id,
-        mfaMethod: user.mfaMethod,
+        mfaMethod: user.mfaMethod as MfaMethod,
       };
     }
 
@@ -123,7 +123,7 @@ class AuthService {
   // ── Token Refresh ─────────────────────────────────────────────────────────
 
   async refreshTokens(refreshToken: string): Promise<AuthTokens> {
-    let payload;
+    let payload: any;
     try {
       payload = jwtService.verifyRefreshToken(refreshToken);
     } catch {
