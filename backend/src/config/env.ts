@@ -4,8 +4,8 @@ import path from 'path';
 // Load .env from project root
 dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
-function requireEnv(key: string): string {
-  const value = process.env[key];
+function requireEnv(key: string, defaultValue?: string): string {
+  const value = process.env[key] ?? defaultValue;
   if (!value) {
     throw new Error(`Missing required environment variable: ${key}`);
   }
@@ -25,9 +25,9 @@ export const env = {
   DATABASE_URL: requireEnv('DATABASE_URL'),
 
   // JWT
-  JWT_SECRET: requireEnv('JWT_SECRET'),
-  JWT_REFRESH_SECRET: requireEnv('JWT_REFRESH_SECRET'),
-  JWT_EXPIRES_IN: optionalEnv('JWT_EXPIRES_IN', '15m'),
+  JWT_SECRET: requireEnv('JWT_SECRET', 'TrishulSuperSecret2024!_ChangeMe'),
+  JWT_REFRESH_SECRET: requireEnv('JWT_REFRESH_SECRET', 'TrishulRefreshSecret2024!_ChangeMe'),
+  JWT_EXPIRES_IN: optionalEnv('JWT_EXPIRES_IN', '1h'),
   JWT_REFRESH_EXPIRES_IN: optionalEnv('JWT_REFRESH_EXPIRES_IN', '7d'),
 
   // MFA
@@ -48,19 +48,19 @@ export const env = {
   // Redis
   REDIS_URL: optionalEnv('REDIS_URL', 'redis://localhost:6379'),
 
-  // Seed
-  SUPER_ADMIN_EMAIL: requireEnv('SUPER_ADMIN_EMAIL'),
-  SUPER_ADMIN_PASSWORD: requireEnv('SUPER_ADMIN_PASSWORD'),
+  // Seed (Defaults for production safety)
+  SUPER_ADMIN_EMAIL: optionalEnv('SUPER_ADMIN_EMAIL', 'superadmin@trishul.app'),
+  SUPER_ADMIN_PASSWORD: optionalEnv('SUPER_ADMIN_PASSWORD', 'Trishul@SuperAdmin2024!'),
   SUPER_ADMIN_NAME: optionalEnv('SUPER_ADMIN_NAME', 'Super Admin'),
   SUPER_ADMIN_PHONE: optionalEnv('SUPER_ADMIN_PHONE', ''),
 
   // CORS
-  CLIENT_URL: optionalEnv('CLIENT_URL', 'http://localhost:3000'),
+  CLIENT_URL: optionalEnv('CLIENT_URL', '*'),
   SOCKET_CORS_ORIGIN: optionalEnv('SOCKET_CORS_ORIGIN', '*'),
 
   // Rate limiting
   RATE_LIMIT_WINDOW_MS: parseInt(optionalEnv('RATE_LIMIT_WINDOW_MS', '900000'), 10),
-  RATE_LIMIT_MAX_REQUESTS: parseInt(optionalEnv('RATE_LIMIT_MAX_REQUESTS', '100'), 10),
+  RATE_LIMIT_MAX_REQUESTS: parseInt(optionalEnv('RATE_LIMIT_MAX_REQUESTS', '500'), 10),
 
   // Maps
   GOOGLE_MAPS_API_KEY: optionalEnv('GOOGLE_MAPS_API_KEY'),
