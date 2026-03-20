@@ -56,11 +56,15 @@ class AuthService {
       // Store pending auth in Redis (expires in 5 min)
       await redis.set(`pending_auth:${user.id}`, '1', 'EX', 300);
 
+      const email = user.email;
+      const name = user.name;
+      const phone = user.phone;
+
       // Trigger OTP if applicable
       if (user.mfaMethod === MfaMethod.EMAIL_OTP) {
-        await mfaService.sendEmailOtp(user.id, user.email, user.name);
-      } else if (user.mfaMethod === MfaMethod.SMS_OTP && user.phone) {
-        await mfaService.sendSmsOtp(user.id, user.phone);
+        await mfaService.sendEmailOtp(user.id, email, name);
+      } else if (user.mfaMethod === MfaMethod.SMS_OTP && phone) {
+        await mfaService.sendSmsOtp(user.id, phone);
       }
 
       return {
