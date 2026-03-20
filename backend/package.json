@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
+    "build:render": "tsc && npx prisma generate",
     "start": "node dist/src/server.js",
     "lint": "eslint src --ext .ts",
     "prisma:generate": "npx prisma generate",
@@ -14,6 +15,7 @@
     "prisma:push": "npx prisma db push",
     "prisma:studio": "npx prisma studio",
     "seed": "ts-node prisma/seed.ts",
+    "seed:compiled": "node dist/prisma/seed.js",
     "test": "jest"
   },
   "dependencies": {

@@ -11,19 +11,20 @@ import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import path from 'path';
 
+// Load .env if present (dev)
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 const prisma = new PrismaClient();
 
-function requireEnv(key: string): string {
-  const value = process.env[key];
+function requireEnv(key: string, defaultValue?: string): string {
+  const value = process.env[key] ?? defaultValue;
   if (!value) throw new Error(`Missing required env variable for seeding: ${key}`);
   return value;
 }
 
 async function seedSuperAdmin(): Promise<void> {
-  const email = requireEnv('SUPER_ADMIN_EMAIL');
-  const password = requireEnv('SUPER_ADMIN_PASSWORD');
+  const email = requireEnv('SUPER_ADMIN_EMAIL', 'superadmin@trishul.app');
+  const password = requireEnv('SUPER_ADMIN_PASSWORD', 'Trishul@SuperAdmin2024!');
   const name = process.env.SUPER_ADMIN_NAME ?? 'Super Admin';
   const phone = process.env.SUPER_ADMIN_PHONE ?? undefined;
 
@@ -51,12 +52,6 @@ async function seedSuperAdmin(): Promise<void> {
   });
 
   console.log(`\n✅ Super Admin created successfully!`);
-  console.log(`   ID   : ${user.id}`);
-  console.log(`   Name : ${user.name}`);
-  console.log(`   Email: ${user.email}`);
-  console.log(`   Role : ${user.role}`);
-  console.log(`   MFA  : ${user.mfaMethod}`);
-  console.log(`\n⚠️  IMPORTANT: Change the password immediately after first login!\n`);
 }
 
 async function main(): Promise<void> {
