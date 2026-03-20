@@ -21,11 +21,12 @@ if (process.env.NODE_ENV !== 'production') {
   global.__prisma = prisma;
 }
 
-prisma.$on('error' as any, (e: any) => {
+// Fix: Use any to bypass Prisma strict event type checking in some versions
+(prisma as any).$on('error', (e: any) => {
   logger.error('Prisma error:', e);
 });
 
-prisma.$on('warn' as any, (e: any) => {
+(prisma as any).$on('warn', (e: any) => {
   logger.warn('Prisma warning:', e);
 });
 

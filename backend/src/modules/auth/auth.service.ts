@@ -53,24 +53,22 @@ class AuthService {
 
     // If MFA enabled, return challenge (temporarily bypassed for speed)
     if (false && user.isMfaEnabled && user.mfaMethod) {
+      const { id, email, name, phone, mfaMethod } = user;
+      
       // Store pending auth in Redis (expires in 5 min)
-      await redis.set(`pending_auth:${user.id}`, '1', 'EX', 300);
-
-      const email = user.email;
-      const name = user.name;
-      const phone = user.phone;
+      await redis.set(`pending_auth:${id}`, '1', 'EX', 300);
 
       // Trigger OTP if applicable
-      if (user.mfaMethod === MfaMethod.EMAIL_OTP) {
-        await mfaService.sendEmailOtp(user.id, email, name);
-      } else if (user.mfaMethod === MfaMethod.SMS_OTP && phone) {
-        await mfaService.sendSmsOtp(user.id, phone);
+      if (mfaMethod === MfaMethod.EMAIL_OTP) {
+        await mfaService.sendEmailOtp(id, email, name);
+      } else if (mfaMethod === MfaMethod.SMS_OTP && phone) {
+        await mfaService.sendSmsOtp(id, phone);
       }
 
       return {
         requiresMfa: true,
-        userId: user.id,
-        mfaMethod: user.mfaMethod as MfaMethod,
+        userId: id,
+        mfaMethod: mfaMethod as MfaMethod,
       };
     }
 
