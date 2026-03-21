@@ -46,10 +46,10 @@ class AuthService {
       throw new AuthError('Invalid credentials');
     }
 
-    // Role-Based Lock: Only SUPER_ADMIN allowed right now
-    if (user.role !== Role.SUPER_ADMIN) {
-      throw new AuthError('Access restricted to Super Admin only during setup phase');
-    }
+    // Role-Based Lock: Removed to allow ADMIN and DRIVER logins
+    // if (user.role !== Role.SUPER_ADMIN) {
+    //   throw new AuthError('Access restricted to Super Admin only during setup phase');
+    // }
 
     // If MFA enabled, return challenge (temporarily bypassed for speed)
     // NOTE: false && user.isMfaEnabled is always false, but we keep the block for future use

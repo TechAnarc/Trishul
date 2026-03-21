@@ -1,0 +1,547 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:transparent;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;padding:8px 0;}
+.module{border-radius:16px;overflow:hidden;border:1.5px solid #1E2D45;background:#080C17;}
+.phone-screen{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:380px;}
+.module-footer{padding:12px 16px;border-top:1px solid #1A2540;display:flex;align-items:center;gap:10px;background:#0A0F1C;}
+.mod-name{font-size:14px;font-weight:600;color:#EDF0F7;}
+.mod-sub{font-size:11px;color:#4B5A72;margin-top:1px;}
+.card{background:#0F1623;border:1px solid #1A2540;border-radius:12px;padding:12px;}
+.card-a{border-color:rgba(255,107,43,.4);}
+.card-g{border-color:rgba(0,212,160,.4);}
+.pill{display:inline-block;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.row{display:flex;align-items:center;}
+.bar-chart{display:flex;align-items:flex-end;gap:5px;height:56px;}
+.bar{border-radius:3px;flex:1;min-height:4px;}
+.divider{height:1px;background:#1A2540;margin:6px 0;}
+.screen-title{font-size:13px;font-weight:700;color:#EDF0F7;margin-bottom:6px;}
+</style>
+
+<div class="grid">
+
+<!-- ── 1. DASHBOARD ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Dashboard</div>
+  <!-- header -->
+  <div class="row" style="justify-content:space-between;">
+    <div class="row" style="gap:10px;">
+      <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,107,43,.2);border:2px solid #FF6B2B;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#FF6B2B;flex-shrink:0;">RS</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#EDF0F7;">Good Morning, Rajan</div>
+        <div style="font-size:11px;color:#4B5A72;margin-top:2px;">DRV-2041 · On Duty</div>
+      </div>
+    </div>
+    <div style="width:36px;height:36px;border-radius:50%;background:#162030;display:flex;align-items:center;justify-content:center;font-size:16px;position:relative;">🔔<div style="position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:#FF4D6A;border:1.5px solid #080C17;"></div></div>
+  </div>
+  <!-- earnings -->
+  <div class="card card-a">
+    <div class="row" style="justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-size:10px;color:#4B5A72;letter-spacing:1px;margin-bottom:4px;">TODAY'S EARNINGS</div>
+        <div style="font-size:28px;font-weight:900;color:#FF6B2B;">₹2,340</div>
+        <div class="row" style="gap:6px;margin-top:6px;">
+          <div class="pill" style="background:rgba(61,155,255,.15);color:#3D9BFF;">3 Trips</div>
+          <div class="pill" style="background:rgba(0,212,160,.15);color:#00D4A0;">+₹480 ↑</div>
+        </div>
+      </div>
+      <div style="width:58px;height:58px;border-radius:50%;border:5px solid rgba(255,107,43,.2);border-top-color:#FF6B2B;border-right-color:#FF6B2B;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#FF6B2B;">72%</div>
+    </div>
+  </div>
+  <!-- stats -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#3D9BFF;">184km</div><div style="font-size:9px;color:#4B5A72;margin-top:2px;">Distance</div></div>
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#FFD166;">8.2h</div><div style="font-size:9px;color:#4B5A72;margin-top:2px;">Drive</div></div>
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#00D4A0;">4.9★</div><div style="font-size:9px;color:#4B5A72;margin-top:2px;">Rating</div></div>
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#A78BFA;">₹12</div><div style="font-size:9px;color:#4B5A72;margin-top:2px;">/km</div></div>
+  </div>
+  <!-- chart -->
+  <div class="card">
+    <div class="row" style="justify-content:space-between;margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:600;color:#8896AD;">Weekly Earnings</div>
+      <div style="font-size:13px;font-weight:800;color:#EDF0F7;">₹16,330</div>
+    </div>
+    <div class="bar-chart">
+      <div class="bar" style="height:30px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:36px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:50px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:42px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:56px;background:#FF6B2B;"></div>
+      <div class="bar" style="height:38px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:4px;background:rgba(255,107,43,.2);"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px;">
+      <span style="font-size:9px;color:#4B5A72;">Mon</span><span style="font-size:9px;color:#4B5A72;">Tue</span><span style="font-size:9px;color:#4B5A72;">Wed</span><span style="font-size:9px;color:#4B5A72;">Thu</span><span style="font-size:9px;color:#FF6B2B;font-weight:700;">Fri</span><span style="font-size:9px;color:#4B5A72;">Sat</span><span style="font-size:9px;color:#4B5A72;">Sun</span>
+    </div>
+  </div>
+  <!-- active trip -->
+  <div class="card card-a">
+    <div class="row" style="justify-content:space-between;margin-bottom:10px;">
+      <div class="pill" style="background:rgba(0,212,160,.15);color:#00D4A0;">● IN PROGRESS</div>
+      <span style="font-size:10px;color:#4B5A72;">TRP-8812</span>
+    </div>
+    <div class="row" style="margin-bottom:10px;">
+      <div style="width:9px;height:9px;border-radius:50%;background:#3D9BFF;"></div>
+      <span style="font-size:12px;font-weight:700;color:#EDF0F7;margin:0 8px;">Ahmedabad</span>
+      <div style="flex:1;height:1px;border-top:1px dashed #1A2540;"></div>
+      <span style="font-size:12px;font-weight:700;color:#EDF0F7;margin:0 8px;">Mumbai</span>
+      <div style="width:9px;height:9px;border-radius:50%;background:#FF6B2B;"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #1A2540;padding-top:10px;">
+      <div style="text-align:center;"><div style="font-size:13px;font-weight:700;color:#EDF0F7;">534 km</div><div style="font-size:9px;color:#4B5A72;">Distance</div></div>
+      <div style="text-align:center;"><div style="font-size:13px;font-weight:700;color:#EDF0F7;">8h 20m</div><div style="font-size:9px;color:#4B5A72;">ETA</div></div>
+      <div style="text-align:center;"><div style="font-size:13px;font-weight:700;color:#00D4A0;">₹7,148</div><div style="font-size:9px;color:#4B5A72;">Fare</div></div>
+    </div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">⚡</span><div><div class="mod-name">Dashboard</div><div class="mod-sub">Home · Overview</div></div></div>
+</div>
+
+<!-- ── 2. LOGIN ── -->
+<div class="module">
+<div class="phone-screen" style="align-items:center;justify-content:center;gap:16px;">
+  <div style="text-align:center;">
+    <div style="font-size:52px;margin-bottom:8px;">🔱</div>
+    <div style="font-size:22px;font-weight:900;color:#EDF0F7;letter-spacing:6px;">TRISHUL</div>
+    <div style="font-size:11px;color:#4B5A72;margin-top:4px;letter-spacing:2px;">DRIVER PLATFORM v2.0</div>
+  </div>
+  <div class="card" style="width:100%;">
+    <div style="font-size:13px;font-weight:700;color:#EDF0F7;margin-bottom:4px;">Enter mobile number</div>
+    <div style="font-size:11px;color:#4B5A72;margin-bottom:14px;">We will send a verification code</div>
+    <div class="row" style="gap:8px;margin-bottom:12px;">
+      <div style="background:#162030;border:1px solid #1A2540;border-radius:8px;padding:11px 12px;font-size:13px;color:#EDF0F7;white-space:nowrap;">🇮🇳 +91</div>
+      <div style="flex:1;background:#162030;border:1px solid #1A2540;border-radius:8px;padding:11px 14px;font-size:13px;color:#4B5A72;">Mobile number</div>
+    </div>
+    <div style="background:#FF6B2B;border-radius:9px;padding:12px;text-align:center;font-size:13px;font-weight:700;color:#fff;">Send OTP →</div>
+  </div>
+  <div class="card" style="width:100%;">
+    <div style="font-size:13px;font-weight:700;color:#EDF0F7;margin-bottom:14px;">Verify OTP</div>
+    <div class="row" style="justify-content:space-between;margin-bottom:14px;">
+      <div style="width:36px;height:44px;background:#162030;border:1px solid #1A2540;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#4B5A72;">•</div>
+      <div style="width:36px;height:44px;background:#162030;border:1px solid #1A2540;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#4B5A72;">•</div>
+      <div style="width:36px;height:44px;background:#162030;border:1px solid #FF6B2B;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#FF6B2B;">4</div>
+      <div style="width:36px;height:44px;background:#162030;border:1px solid #1A2540;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#4B5A72;">•</div>
+      <div style="width:36px;height:44px;background:#162030;border:1px solid #1A2540;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#4B5A72;">•</div>
+      <div style="width:36px;height:44px;background:#162030;border:1px solid #1A2540;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#4B5A72;">•</div>
+    </div>
+    <div style="background:#00D4A0;border-radius:9px;padding:12px;text-align:center;font-size:13px;font-weight:700;color:#fff;">Verify &amp; Login →</div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">🔐</span><div><div class="mod-name">Login</div><div class="mod-sub">Phone · OTP auth</div></div></div>
+</div>
+
+<!-- ── 3. START TRIP ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Plan Trip</div>
+  <!-- map preview -->
+  <div style="background:#0D1E36;border-radius:12px;height:100px;display:flex;align-items:center;justify-content:center;border:1px solid #1A2540;position:relative;overflow:hidden;">
+    <svg width="100%" height="100%" viewBox="0 0 260 100" style="position:absolute;inset:0;">
+      <path d="M20,80 Q60,60 100,45 Q140,30 180,20 Q210,14 240,12" stroke="#3D9BFF" stroke-width="1.5" fill="none" stroke-dasharray="5,3" opacity="0.5"/>
+      <path d="M20,80 Q60,60 100,45 Q140,30 160,22" stroke="#FF6B2B" stroke-width="2.5" fill="none"/>
+      <circle cx="20" cy="80" r="5" fill="#3D9BFF"/>
+      <circle cx="160" cy="22" r="5" fill="#FF6B2B"/>
+      <circle cx="240" cy="12" r="4" fill="#FF6B2B" opacity="0.4"/>
+    </svg>
+    <div style="position:absolute;top:10px;left:14px;background:rgba(61,155,255,.2);border:1px solid #3D9BFF;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#3D9BFF;">📍 Ahmedabad</div>
+    <div style="position:absolute;top:10px;right:14px;background:rgba(255,107,43,.2);border:1px solid #FF6B2B;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#FF6B2B;">📍 Mumbai</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:10px;color:#8896AD;font-weight:600;">534 km · ~8h 20m · 4 stops</div>
+  </div>
+  <!-- stops -->
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:10px;">Route stops</div>
+    <div class="row" style="margin-bottom:10px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:12px;"><div style="width:10px;height:10px;border-radius:50%;background:#3D9BFF;"></div><div style="width:2px;height:20px;background:#1A2540;margin-top:2px;"></div></div>
+      <div><div style="font-size:10px;color:#4B5A72;">Pickup</div><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Ahmedabad</div></div>
+    </div>
+    <div class="row" style="margin-bottom:10px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:12px;"><div style="width:10px;height:10px;border-radius:50%;background:#00D4A0;"></div><div style="width:2px;height:20px;background:#1A2540;margin-top:2px;"></div></div>
+      <div><div style="font-size:10px;color:#4B5A72;">Stop 1</div><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Vadodara</div></div>
+    </div>
+    <div class="row" style="margin-bottom:10px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:12px;"><div style="width:10px;height:10px;border-radius:50%;background:#00D4A0;"></div><div style="width:2px;height:20px;background:#1A2540;margin-top:2px;"></div></div>
+      <div><div style="font-size:10px;color:#4B5A72;">Stop 2</div><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Surat</div></div>
+    </div>
+    <div class="row">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:12px;"><div style="width:10px;height:10px;border-radius:50%;background:#FF6B2B;"></div></div>
+      <div><div style="font-size:10px;color:#4B5A72;">Drop</div><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Mumbai</div></div>
+    </div>
+  </div>
+  <!-- fare -->
+  <div class="card card-g">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">Fare estimate</div>
+    <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #1A2540;"><span style="font-size:11px;color:#8896AD;">Distance (534×₹12)</span><span style="font-size:11px;color:#EDF0F7;font-weight:600;">₹6,408</span></div>
+    <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #1A2540;"><span style="font-size:11px;color:#8896AD;">Toll + Fuel</span><span style="font-size:11px;color:#EDF0F7;font-weight:600;">₹740</span></div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0 4px;"><span style="font-size:13px;font-weight:700;color:#EDF0F7;">Total</span><span style="font-size:16px;font-weight:900;color:#00D4A0;">₹7,548</span></div>
+  </div>
+  <div style="background:#FF6B2B;border-radius:10px;padding:13px;text-align:center;font-size:13px;font-weight:700;color:#fff;">Start Trip Now 🚗</div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">🗺</span><div><div class="mod-name">Start trip</div><div class="mod-sub">Route planner · Fare preview</div></div></div>
+</div>
+
+<!-- ── 4. LIVE TRIP ── -->
+<div class="module">
+<div class="phone-screen" style="padding:0;gap:0;">
+  <!-- map -->
+  <div style="background:#0D1E36;height:200px;position:relative;overflow:hidden;">
+    <svg width="100%" height="100%" viewBox="0 0 280 200" preserveAspectRatio="none" style="position:absolute;inset:0;">
+      <rect x="0" y="130" width="280" height="40" fill="#162030"/>
+      <line x1="0" y1="128" x2="280" y2="128" stroke="rgba(240,230,140,0.25)" stroke-width="1.5"/>
+      <line x1="0" y1="172" x2="280" y2="172" stroke="rgba(240,230,140,0.25)" stroke-width="1.5"/>
+      <line x1="20" y1="150" x2="50" y2="150" stroke="rgba(240,230,140,0.5)" stroke-width="2" stroke-dasharray="0"/>
+      <line x1="70" y1="150" x2="100" y2="150" stroke="rgba(240,230,140,0.5)" stroke-width="2"/>
+      <line x1="120" y1="150" x2="150" y2="150" stroke="rgba(240,230,140,0.5)" stroke-width="2"/>
+      <line x1="170" y1="150" x2="200" y2="150" stroke="rgba(240,230,140,0.5)" stroke-width="2"/>
+      <line x1="220" y1="150" x2="250" y2="150" stroke="rgba(240,230,140,0.5)" stroke-width="2"/>
+      <path d="M10,128 Q60,100 110,80 Q160,60 200,45 Q230,35 260,28" stroke="#FF6B2B" stroke-width="2.5" fill="none"/>
+      <path d="M10,128 Q60,100 110,80 Q150,62 170,52" stroke="#3D9BFF" stroke-width="2" fill="none" stroke-dasharray="4,3" opacity="0.5"/>
+      <circle cx="10" cy="128" r="5" fill="#3D9BFF"/>
+      <circle cx="170" cy="52" r="8" fill="rgba(255,107,43,0.3)" stroke="#FF6B2B" stroke-width="2"/>
+      <text x="167" y="56" font-size="10" fill="#FF6B2B">🚗</text>
+      <circle cx="260" cy="28" r="4" fill="#FF6B2B" opacity="0.5"/>
+    </svg>
+    <!-- overlays -->
+    <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(0,212,160,.18);border:1px solid #00D4A0;border-radius:20px;padding:4px 14px;display:flex;align-items:center;gap:6px;">
+      <div style="width:7px;height:7px;border-radius:50%;background:#00D4A0;"></div>
+      <span style="font-size:11px;font-weight:700;color:#00D4A0;letter-spacing:1px;">LIVE</span>
+    </div>
+    <div style="position:absolute;top:12px;right:12px;background:#FF4D6A;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#fff;letter-spacing:1.5px;">SOS</div>
+    <!-- turn banner -->
+    <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(8,12,23,.93);padding:10px 14px;display:flex;align-items:center;gap:10px;border-top:1px solid #1A2540;">
+      <div style="width:36px;height:36px;background:rgba(61,155,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">↰</div>
+      <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:#EDF0F7;">Turn left onto NH48</div><div style="font-size:10px;color:#4B5A72;margin-top:1px;">In 2.3 km</div></div>
+      <div style="font-size:12px;font-weight:700;color:#00D4A0;">4h 10m</div>
+    </div>
+  </div>
+  <!-- live panel -->
+  <div style="padding:14px;flex:1;background:#0F1623;">
+    <div class="row" style="justify-content:space-between;margin-bottom:10px;">
+      <div><div style="font-size:14px;font-weight:800;color:#EDF0F7;">Ahmedabad → Mumbai</div><div style="font-size:11px;color:#4B5A72;margin-top:2px;">TRP-8812 · 01:20:22</div></div>
+      <div style="width:38px;height:38px;border-radius:50%;background:rgba(61,155,255,.15);display:flex;align-items:center;justify-content:center;font-size:18px;position:relative;">💬<div style="position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#FF4D6A;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;font-weight:800;">1</div></div>
+    </div>
+    <div style="height:5px;background:#1A2540;border-radius:3px;margin-bottom:5px;"><div style="height:5px;background:#FF6B2B;border-radius:3px;width:34%;"></div></div>
+    <div class="row" style="justify-content:space-between;margin-bottom:12px;font-size:10px;color:#4B5A72;"><span>Start</span><span style="color:#FF6B2B;font-weight:700;">184 km covered</span><span>534 km</span></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:12px;border-bottom:1px solid #1A2540;margin-bottom:12px;">
+      <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:#3D9BFF;">72</div><div style="font-size:9px;color:#4B5A72;">km/h</div></div>
+      <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:#FF6B2B;">184</div><div style="font-size:9px;color:#4B5A72;">km done</div></div>
+      <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:#FFD166;">62%</div><div style="font-size:9px;color:#4B5A72;">Fuel</div></div>
+      <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:#00D4A0;">4h 10m</div><div style="font-size:9px;color:#4B5A72;">ETA</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;">
+      <div style="text-align:center;padding:9px 4px;background:rgba(61,155,255,.12);border-radius:8px;"><div style="font-size:18px;">💸</div><div style="font-size:9px;font-weight:700;color:#3D9BFF;margin-top:3px;">Expense</div></div>
+      <div style="text-align:center;padding:9px 4px;background:rgba(0,212,160,.12);border-radius:8px;"><div style="font-size:18px;">📞</div><div style="font-size:9px;font-weight:700;color:#00D4A0;margin-top:3px;">Call</div></div>
+      <div style="text-align:center;padding:9px 4px;background:rgba(255,209,102,.12);border-radius:8px;"><div style="font-size:18px;">➕</div><div style="font-size:9px;font-weight:700;color:#FFD166;margin-top:3px;">Stop</div></div>
+      <div style="text-align:center;padding:9px 4px;background:rgba(167,139,250,.12);border-radius:8px;"><div style="font-size:18px;">📍</div><div style="font-size:9px;font-weight:700;color:#A78BFA;margin-top:3px;">Share</div></div>
+      <div style="text-align:center;padding:9px 4px;background:rgba(255,107,43,.12);border-radius:8px;"><div style="font-size:18px;">✅</div><div style="font-size:9px;font-weight:700;color:#FF6B2B;margin-top:3px;">Done</div></div>
+    </div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">📍</span><div><div class="mod-name">Live trip</div><div class="mod-sub">Real-time tracking · Navigation</div></div></div>
+</div>
+
+<!-- ── 5. ADD EXPENSE ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Add Expense</div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:10px;">Select category</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+      <div style="text-align:center;padding:12px 6px;border-radius:9px;border:2px solid #FFD166;background:rgba(255,209,102,.12);"><div style="font-size:22px;">🚧</div><div style="font-size:11px;font-weight:700;color:#FFD166;margin-top:5px;">Toll</div></div>
+      <div style="text-align:center;padding:12px 6px;border-radius:9px;border:1px solid #1A2540;"><div style="font-size:22px;">⛽</div><div style="font-size:11px;font-weight:600;color:#4B5A72;margin-top:5px;">Fuel</div></div>
+      <div style="text-align:center;padding:12px 6px;border-radius:9px;border:1px solid #1A2540;"><div style="font-size:22px;">🍱</div><div style="font-size:11px;font-weight:600;color:#4B5A72;margin-top:5px;">Food</div></div>
+      <div style="text-align:center;padding:12px 6px;border-radius:9px;border:1px solid #1A2540;"><div style="font-size:22px;">🅿</div><div style="font-size:11px;font-weight:600;color:#4B5A72;margin-top:5px;">Parking</div></div>
+      <div style="text-align:center;padding:12px 6px;border-radius:9px;border:1px solid #1A2540;"><div style="font-size:22px;">📋</div><div style="font-size:11px;font-weight:600;color:#4B5A72;margin-top:5px;">Challan</div></div>
+      <div style="text-align:center;padding:12px 6px;border-radius:9px;border:1px solid #1A2540;"><div style="font-size:22px;">📦</div><div style="font-size:11px;font-weight:600;color:#4B5A72;margin-top:5px;">Other</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:10px;">Amount</div>
+    <div class="row" style="background:#162030;border-radius:9px;border:1px solid #1A2540;padding:10px 14px;gap:6px;">
+      <span style="font-size:24px;font-weight:800;color:#FF6B2B;">₹</span>
+      <span style="font-size:28px;font-weight:900;color:#EDF0F7;">420.00</span>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">Note</div>
+    <div style="background:#162030;border-radius:8px;padding:10px 12px;font-size:12px;color:#4B5A72;border:1px solid #1A2540;">NH48 toll booth near Vadodara...</div>
+  </div>
+  <div class="card" style="background:#162030;">
+    <div class="row" style="justify-content:space-between;">
+      <span style="font-size:11px;color:#4B5A72;">📍 Trip: TRP-8812</span>
+      <span style="font-size:11px;color:#4B5A72;">🕐 2:45 PM</span>
+    </div>
+  </div>
+  <div style="background:#FF6B2B;border-radius:10px;padding:13px;text-align:center;font-size:13px;font-weight:700;color:#fff;">Save Expense ✓</div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">💸</span><div><div class="mod-name">Add expense</div><div class="mod-sub">Toll · Fuel · Food · Parking</div></div></div>
+</div>
+
+<!-- ── 6. INVOICE ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Invoice</div>
+  <div class="card card-a">
+    <div class="row" style="gap:10px;margin-bottom:10px;">
+      <span style="font-size:28px;">🔱</span>
+      <div style="flex:1;"><div style="font-size:14px;font-weight:900;color:#EDF0F7;letter-spacing:2px;">TRISHUL TRAVELS</div><div style="font-size:10px;color:#4B5A72;">Trip Invoice</div></div>
+      <div><div class="pill" style="background:rgba(255,209,102,.15);color:#FFD166;">PENDING</div><div style="font-size:9px;color:#4B5A72;margin-top:3px;">INV-20240318</div></div>
+    </div>
+    <div style="border-top:1px solid #1A2540;padding-top:8px;display:flex;flex-direction:column;gap:3px;">
+      <div style="font-size:11px;color:#8896AD;">📅 18 Mar 2024</div>
+      <div style="font-size:11px;color:#8896AD;">🗺 Ahmedabad → Mumbai</div>
+      <div style="font-size:11px;color:#8896AD;">👤 Rajan Sharma · DRV-2041</div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">Trip charges</div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1A2540;"><span style="font-size:12px;color:#8896AD;">Distance (534 × ₹12)</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">₹6,408</span></div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1A2540;"><span style="font-size:12px;color:#8896AD;">Toll charges</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">₹420</span></div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1A2540;"><span style="font-size:12px;color:#8896AD;">Fuel allowance</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">₹320</span></div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:#8896AD;">Driver allowance</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">₹400</span></div>
+  </div>
+  <div class="card card-g">
+    <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #1A2540;"><span style="font-size:12px;color:#8896AD;">Subtotal</span><span style="font-size:12px;color:#EDF0F7;">₹7,548</span></div>
+    <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #1A2540;"><span style="font-size:12px;color:#8896AD;">Expenses</span><span style="font-size:12px;color:#EDF0F7;">₹240</span></div>
+    <div style="display:flex;justify-content:space-between;padding:10px 0 4px;"><span style="font-size:14px;font-weight:800;color:#EDF0F7;">TOTAL PAYABLE</span><span style="font-size:22px;font-weight:900;color:#00D4A0;">₹7,788</span></div>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <div style="flex:1;border:1.5px solid rgba(61,155,255,.5);border-radius:10px;padding:11px;text-align:center;font-size:12px;font-weight:700;color:#3D9BFF;">📄 Download PDF</div>
+    <div style="flex:1;background:#00D4A0;border-radius:10px;padding:11px;text-align:center;font-size:12px;font-weight:700;color:#fff;">Send to Admin →</div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">🧾</span><div><div class="mod-name">Invoice</div><div class="mod-sub">Auto-calculated bill</div></div></div>
+</div>
+
+<!-- ── 7. LEDGER ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Analytics</div>
+  <div class="card card-g">
+    <div class="row" style="justify-content:space-between;align-items:flex-start;">
+      <div><div style="font-size:10px;color:#4B5A72;letter-spacing:1.5px;margin-bottom:4px;">NET EARNINGS · MARCH</div><div style="font-size:26px;font-weight:900;color:#00D4A0;">₹42,330</div><div class="row" style="gap:6px;margin-top:6px;"><div class="pill" style="background:rgba(61,155,255,.15);color:#3D9BFF;">22 Trips</div><div class="pill" style="background:rgba(0,212,160,.15);color:#00D4A0;">↑ 14%</div></div></div>
+      <div style="text-align:right;display:flex;flex-direction:column;gap:6px;"><div><div style="font-size:13px;font-weight:700;color:#FF4D6A;">₹6,200</div><div style="font-size:9px;color:#4B5A72;">Expenses</div></div><div><div style="font-size:13px;font-weight:700;color:#00D4A0;">₹48,530</div><div style="font-size:9px;color:#4B5A72;">Gross</div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="row" style="justify-content:space-between;margin-bottom:10px;"><span style="font-size:11px;font-weight:700;color:#8896AD;">Daily earnings</span><span style="font-size:13px;font-weight:800;color:#FF6B2B;">₹26,090</span></div>
+    <div class="bar-chart">
+      <div class="bar" style="height:43px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:56px;background:#FF6B2B;"></div>
+      <div class="bar" style="height:37px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:50px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:46px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:32px;background:rgba(255,107,43,.4);"></div>
+      <div class="bar" style="height:20px;background:rgba(255,107,43,.25);"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px;">
+      <span style="font-size:9px;color:#4B5A72;">Mon</span><span style="font-size:9px;color:#FF6B2B;font-weight:700;">Tue</span><span style="font-size:9px;color:#4B5A72;">Wed</span><span style="font-size:9px;color:#4B5A72;">Thu</span><span style="font-size:9px;color:#4B5A72;">Fri</span><span style="font-size:9px;color:#4B5A72;">Sat</span><span style="font-size:9px;color:#4B5A72;">Sun</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+    <div class="card"><div style="font-size:18px;margin-bottom:4px;">🏆</div><div style="font-size:14px;font-weight:800;color:#FFD166;">Friday</div><div style="font-size:11px;font-weight:600;color:#EDF0F7;">Best Day</div><div style="font-size:10px;color:#4B5A72;margin-top:1px;">₹5,300 earned</div></div>
+    <div class="card"><div style="font-size:18px;margin-bottom:4px;">⭐</div><div style="font-size:14px;font-weight:800;color:#00D4A0;">4.9 / 5</div><div style="font-size:11px;font-weight:600;color:#EDF0F7;">Avg Rating</div><div style="font-size:10px;color:#4B5A72;margin-top:1px;">48 reviews</div></div>
+    <div class="card"><div style="font-size:18px;margin-bottom:4px;">📍</div><div style="font-size:14px;font-weight:800;color:#3D9BFF;">178 km</div><div style="font-size:11px;font-weight:600;color:#EDF0F7;">Avg Trip</div><div style="font-size:10px;color:#4B5A72;margin-top:1px;">Per trip</div></div>
+    <div class="card"><div style="font-size:18px;margin-bottom:4px;">⛽</div><div style="font-size:14px;font-weight:800;color:#FF6B2B;">₹4,200</div><div style="font-size:11px;font-weight:600;color:#EDF0F7;">Fuel Spend</div><div style="font-size:10px;color:#4B5A72;margin-top:1px;">This month</div></div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">📈</span><div><div class="mod-name">Ledger</div><div class="mod-sub">Analytics · Earnings</div></div></div>
+</div>
+
+<!-- ── 8. CHAT ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Messages</div>
+  <div style="background:#162030;border:1px solid #1A2540;border-radius:9px;padding:10px 13px;display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+    <span style="font-size:14px;color:#4B5A72;">🔍</span><span style="font-size:12px;color:#4B5A72;">Search conversations...</span>
+  </div>
+  <div class="card card-a" style="display:flex;align-items:center;gap:10px;">
+    <div style="width:44px;height:44px;border-radius:50%;background:#162030;display:flex;align-items:center;justify-content:center;font-size:22px;position:relative;flex-shrink:0;">🏢<div style="position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;background:#00D4A0;border:2px solid #0F1623;"></div></div>
+    <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Admin · Trishul HQ</div><div style="font-size:11px;color:#4B5A72;margin-top:2px;">Take NH48 route today</div></div>
+    <div style="width:20px;height:20px;border-radius:50%;background:#FF6B2B;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;">2</div>
+  </div>
+  <div class="card" style="display:flex;align-items:center;gap:10px;">
+    <div style="width:44px;height:44px;border-radius:50%;background:#162030;display:flex;align-items:center;justify-content:center;font-size:22px;position:relative;flex-shrink:0;">🧍<div style="position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;background:#00D4A0;border:2px solid #0F1623;"></div></div>
+    <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Passenger · Arjun Shah</div><div style="font-size:11px;color:#4B5A72;margin-top:2px;">Ok, I will be ready</div></div>
+    <div style="width:20px;height:20px;border-radius:50%;background:#FF6B2B;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;">1</div>
+  </div>
+  <div class="card" style="display:flex;align-items:center;gap:10px;">
+    <div style="width:44px;height:44px;border-radius:50%;background:#162030;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🧍‍♀️</div>
+    <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#EDF0F7;">Passenger · Priya Desai</div><div style="font-size:11px;color:#4B5A72;margin-top:2px;">Thanks for the safe ride!</div></div>
+  </div>
+  <!-- chat preview -->
+  <div class="card" style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+    <div style="font-size:10px;font-weight:600;color:#4B5A72;margin-bottom:2px;">CHAT PREVIEW — Admin</div>
+    <div style="align-self:flex-start;background:#162030;border-radius:10px;border-bottom-left-radius:3px;padding:8px 12px;max-width:75%;">
+      <div style="font-size:12px;color:#EDF0F7;">Hi, how far are you?</div>
+      <div style="font-size:9px;color:#4B5A72;margin-top:3px;">2:15 PM</div>
+    </div>
+    <div style="align-self:flex-end;background:#FF6B2B;border-radius:10px;border-bottom-right-radius:3px;padding:8px 12px;max-width:75%;">
+      <div style="font-size:12px;color:#fff;">About 45 minutes away</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.6);margin-top:3px;">2:16 PM</div>
+    </div>
+    <div style="align-self:flex-start;background:#162030;border-radius:10px;border-bottom-left-radius:3px;padding:8px 12px;max-width:75%;">
+      <div style="font-size:12px;color:#EDF0F7;">Ok, I will be ready</div>
+      <div style="font-size:9px;color:#4B5A72;margin-top:3px;">2:18 PM</div>
+    </div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">💬</span><div><div class="mod-name">Chat</div><div class="mod-sub">Admin · Passenger messages</div></div></div>
+</div>
+
+<!-- ── 9. QR PAYMENT ── -->
+<div class="module">
+<div class="phone-screen" style="align-items:center;justify-content:center;gap:12px;">
+  <div class="screen-title" style="align-self:flex-start;">QR Payment</div>
+  <div class="card card-g" style="width:100%;text-align:center;">
+    <div style="font-size:10px;color:#4B5A72;letter-spacing:1.5px;margin-bottom:4px;">AMOUNT DUE</div>
+    <div style="font-size:32px;font-weight:900;color:#00D4A0;">₹7,788</div>
+    <div style="font-size:11px;color:#4B5A72;margin-top:2px;">Trip TRP-8812</div>
+  </div>
+  <!-- QR code -->
+  <div style="width:160px;height:160px;background:#fff;border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;gap:0;align-content:flex-start;position:relative;flex-shrink:0;">
+    <svg width="136" height="136" viewBox="0 0 136 136" style="position:absolute;inset:12px;">
+      <rect x="0" y="0" width="40" height="40" rx="4" fill="none" stroke="#111" stroke-width="5"/>
+      <rect x="10" y="10" width="20" height="20" rx="2" fill="#111"/>
+      <rect x="96" y="0" width="40" height="40" rx="4" fill="none" stroke="#111" stroke-width="5"/>
+      <rect x="106" y="10" width="20" height="20" rx="2" fill="#111"/>
+      <rect x="0" y="96" width="40" height="40" rx="4" fill="none" stroke="#111" stroke-width="5"/>
+      <rect x="10" y="106" width="20" height="20" rx="2" fill="#111"/>
+      <rect x="50" y="4" width="6" height="6" fill="#111"/><rect x="60" y="4" width="6" height="6" fill="#111"/><rect x="70" y="4" width="6" height="6" fill="#111"/>
+      <rect x="50" y="14" width="6" height="6" fill="#111"/><rect x="70" y="14" width="6" height="6" fill="#111"/>
+      <rect x="50" y="24" width="6" height="6" fill="#111"/><rect x="60" y="24" width="6" height="6" fill="#111"/>
+      <rect x="4" y="50" width="6" height="6" fill="#111"/><rect x="14" y="50" width="6" height="6" fill="#111"/>
+      <rect x="4" y="60" width="6" height="6" fill="#111"/><rect x="24" y="60" width="6" height="6" fill="#111"/>
+      <rect x="4" y="70" width="6" height="6" fill="#111"/><rect x="14" y="70" width="6" height="6" fill="#111"/><rect x="24" y="70" width="6" height="6" fill="#111"/>
+      <rect x="50" y="50" width="36" height="36" rx="4" fill="none" stroke="#111" stroke-width="3"/>
+      <text x="68" y="74" text-anchor="middle" font-size="20">🔱</text>
+      <rect x="100" y="50" width="6" height="6" fill="#111"/><rect x="110" y="50" width="6" height="6" fill="#111"/><rect x="120" y="50" width="6" height="6" fill="#111"/><rect x="130" y="50" width="6" height="6" fill="#111"/>
+      <rect x="100" y="60" width="6" height="6" fill="#111"/><rect x="120" y="60" width="6" height="6" fill="#111"/>
+      <rect x="100" y="70" width="6" height="6" fill="#111"/><rect x="110" y="70" width="6" height="6" fill="#111"/><rect x="130" y="70" width="6" height="6" fill="#111"/>
+      <rect x="50" y="100" width="6" height="6" fill="#111"/><rect x="60" y="100" width="6" height="6" fill="#111"/><rect x="80" y="100" width="6" height="6" fill="#111"/>
+      <rect x="50" y="110" width="6" height="6" fill="#111"/><rect x="70" y="110" width="6" height="6" fill="#111"/><rect x="80" y="110" width="6" height="6" fill="#111"/>
+      <rect x="100" y="100" width="6" height="6" fill="#111"/><rect x="110" y="100" width="6" height="6" fill="#111"/>
+      <rect x="120" y="100" width="6" height="6" fill="#111"/><rect x="100" y="110" width="6" height="6" fill="#111"/><rect x="120" y="110" width="6" height="6" fill="#111"/><rect x="130" y="110" width="6" height="6" fill="#111"/>
+    </svg>
+  </div>
+  <!-- countdown -->
+  <div style="width:100%;">
+    <div class="row" style="justify-content:space-between;margin-bottom:5px;"><span style="font-size:11px;color:#4B5A72;">QR expires in</span><span style="font-size:12px;font-weight:800;color:#00D4A0;">04:45</span></div>
+    <div style="height:5px;background:#1A2540;border-radius:3px;"><div style="height:5px;background:#00D4A0;border-radius:3px;width:88%;"></div></div>
+  </div>
+  <!-- UPI row -->
+  <div class="card" style="width:100%;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:10px;color:#4B5A72;margin-bottom:2px;">UPI ID</div><div style="font-size:13px;font-weight:700;color:#EDF0F7;">trishul.travels@upi</div></div>
+    <div style="padding:7px 14px;background:#162030;border-radius:8px;font-size:12px;font-weight:700;color:#3D9BFF;border:1px solid #1A2540;">📋 Copy</div>
+  </div>
+  <!-- app chips -->
+  <div class="row" style="gap:8px;justify-content:center;">
+    <div style="padding:5px 12px;background:#162030;border:1px solid #1A2540;border-radius:20px;font-size:11px;color:#8896AD;font-weight:600;">GPay</div>
+    <div style="padding:5px 12px;background:#162030;border:1px solid #1A2540;border-radius:20px;font-size:11px;color:#8896AD;font-weight:600;">PhonePe</div>
+    <div style="padding:5px 12px;background:#162030;border:1px solid #1A2540;border-radius:20px;font-size:11px;color:#8896AD;font-weight:600;">Paytm</div>
+    <div style="padding:5px 12px;background:#162030;border:1px solid #1A2540;border-radius:20px;font-size:11px;color:#8896AD;font-weight:600;">BHIM</div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">⬛</span><div><div class="mod-name">QR Payment</div><div class="mod-sub">Scan &amp; pay · UPI</div></div></div>
+</div>
+
+<!-- ── 10. SAFETY ── -->
+<div class="module">
+<div class="phone-screen" style="align-items:center;">
+  <div class="screen-title" style="align-self:flex-start;">Safety Center</div>
+  <!-- SOS button -->
+  <div style="width:140px;height:140px;border-radius:50%;background:rgba(255,77,106,.1);border:4px solid #FF4D6A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin:8px 0;">
+    <div style="font-size:36px;">🚨</div>
+    <div style="font-size:12px;font-weight:800;color:#FF4D6A;letter-spacing:1.5px;">EMERGENCY SOS</div>
+    <div style="font-size:10px;color:rgba(255,77,106,.6);">Hold for 2 seconds</div>
+  </div>
+  <!-- health rows -->
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px;">
+    <div class="card" style="display:flex;align-items:center;gap:10px;border-left:3px solid #FFD166;border-radius:0 10px 10px 0;">
+      <span style="font-size:20px;">⏱</span><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#EDF0F7;">Driving Hours</div><div style="font-size:10px;color:#4B5A72;margin-top:2px;">Take a break soon</div></div><div style="font-size:13px;font-weight:700;color:#FFD166;">8h 20m</div>
+    </div>
+    <div class="card" style="display:flex;align-items:center;gap:10px;border-left:3px solid #00D4A0;border-radius:0 10px 10px 0;">
+      <span style="font-size:20px;">💤</span><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#EDF0F7;">Break Due</div><div style="font-size:10px;color:#4B5A72;margin-top:2px;">Last break: 2:30 PM</div></div><div style="font-size:13px;font-weight:700;color:#00D4A0;">45 min</div>
+    </div>
+    <div class="card" style="display:flex;align-items:center;gap:10px;border-left:3px solid #3D9BFF;border-radius:0 10px 10px 0;">
+      <span style="font-size:20px;">🚀</span><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#EDF0F7;">Avg Speed</div><div style="font-size:10px;color:#4B5A72;margin-top:2px;">Within safe limits</div></div><div style="font-size:13px;font-weight:700;color:#3D9BFF;">74 km/h</div>
+    </div>
+  </div>
+  <!-- contacts -->
+  <div style="width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px;">
+    <div class="card" style="text-align:center;border-color:rgba(61,155,255,.35);"><div style="font-size:24px;margin-bottom:4px;">🏢</div><div style="font-size:11px;font-weight:700;color:#3D9BFF;">Admin</div><div style="font-size:9px;color:#4B5A72;margin-top:1px;">+91 987...</div></div>
+    <div class="card" style="text-align:center;border-color:rgba(255,77,106,.35);"><div style="font-size:24px;margin-bottom:4px;">🆘</div><div style="font-size:11px;font-weight:700;color:#FF4D6A;">Emergency</div><div style="font-size:9px;color:#4B5A72;margin-top:1px;">112</div></div>
+    <div class="card" style="text-align:center;border-color:rgba(0,212,160,.35);"><div style="font-size:24px;margin-bottom:4px;">👨‍👩‍👦</div><div style="font-size:11px;font-weight:700;color:#00D4A0;">Family</div><div style="font-size:9px;color:#4B5A72;margin-top:1px;">+91 876...</div></div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">🛡</span><div><div class="mod-name">Safety</div><div class="mod-sub">SOS · Health monitor</div></div></div>
+</div>
+
+<!-- ── 11. PROFILE ── -->
+<div class="module">
+<div class="phone-screen">
+  <div style="text-align:center;padding:8px 0 10px;border-bottom:1px solid #1A2540;margin-bottom:4px;">
+    <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,107,43,.2);border:3px solid #FF6B2B;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#FF6B2B;margin:0 auto;position:relative;">RS<div style="position:absolute;bottom:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#00D4A0;border:2px solid #080C17;"></div></div>
+    <div style="font-size:18px;font-weight:800;color:#EDF0F7;margin-top:10px;">Rajan Sharma</div>
+    <div style="font-size:11px;color:#4B5A72;margin-top:3px;">DRV-2041 · Joined Jan 2022</div>
+    <div class="row" style="gap:6px;margin-top:8px;justify-content:center;"><div class="pill" style="background:rgba(0,212,160,.15);color:#00D4A0;">● On Duty</div><div class="pill" style="background:rgba(61,155,255,.15);color:#3D9BFF;">Innova Crysta</div></div>
+    <div class="row" style="background:#162030;border-radius:9px;padding:10px 14px;margin-top:12px;gap:10px;justify-content:space-between;"><span style="font-size:12px;font-weight:600;color:#EDF0F7;">Shift Status</span><div style="width:42px;height:22px;background:#00D4A0;border-radius:11px;padding:2px;display:flex;align-items:center;justify-content:flex-end;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;"></div></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:4px;">
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#FF6B2B;">284</div><div style="font-size:9px;color:#4B5A72;">Trips</div></div>
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#3D9BFF;">48k km</div><div style="font-size:9px;color:#4B5A72;">Distance</div></div>
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#00D4A0;">₹4.2L</div><div style="font-size:9px;color:#4B5A72;">Earned</div></div>
+    <div class="card" style="padding:8px;text-align:center;"><div style="font-size:13px;font-weight:800;color:#FFD166;">4.9★</div><div style="font-size:9px;color:#4B5A72;">Rating</div></div>
+  </div>
+  <!-- rating breakdown -->
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">Rating breakdown</div>
+    <div class="row" style="gap:14px;">
+      <div style="text-align:center;"><div style="font-size:32px;font-weight:900;color:#EDF0F7;">4.9</div><div style="font-size:16px;">⭐⭐⭐⭐⭐</div><div style="font-size:10px;color:#4B5A72;margin-top:3px;">48 reviews</div></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+        <div class="row" style="gap:6px;"><span style="font-size:10px;color:#4B5A72;width:20px;">5★</span><div style="flex:1;height:5px;background:#1A2540;border-radius:3px;"><div style="height:5px;background:#00D4A0;border-radius:3px;width:82%;"></div></div><span style="font-size:9px;color:#4B5A72;width:14px;">39</span></div>
+        <div class="row" style="gap:6px;"><span style="font-size:10px;color:#4B5A72;width:20px;">4★</span><div style="flex:1;height:5px;background:#1A2540;border-radius:3px;"><div style="height:5px;background:#00D4A0;border-radius:3px;width:12%;"></div></div><span style="font-size:9px;color:#4B5A72;width:14px;">6</span></div>
+        <div class="row" style="gap:6px;"><span style="font-size:10px;color:#4B5A72;width:20px;">3★</span><div style="flex:1;height:5px;background:#1A2540;border-radius:3px;"><div style="height:5px;background:#FFD166;border-radius:3px;width:4%;"></div></div><span style="font-size:9px;color:#4B5A72;width:14px;">2</span></div>
+        <div class="row" style="gap:6px;"><span style="font-size:10px;color:#4B5A72;width:20px;">2★</span><div style="flex:1;height:5px;background:#1A2540;border-radius:3px;"><div style="height:5px;background:#FF4D6A;border-radius:3px;width:2%;"></div></div><span style="font-size:9px;color:#4B5A72;width:14px;">1</span></div>
+        <div class="row" style="gap:6px;"><span style="font-size:10px;color:#4B5A72;width:20px;">1★</span><div style="flex:1;height:5px;background:#1A2540;border-radius:3px;"></div><span style="font-size:9px;color:#4B5A72;width:14px;">0</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- docs -->
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">Documents</div>
+    <div class="row" style="justify-content:space-between;padding:6px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:8px;"><span style="font-size:16px;">🪪</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">Driving Licence</span></div><div class="pill" style="background:rgba(0,212,160,.15);color:#00D4A0;">Valid</div></div>
+    <div class="row" style="justify-content:space-between;padding:6px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:8px;"><span style="font-size:16px;">🛡</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">Insurance</span></div><div class="pill" style="background:rgba(255,209,102,.15);color:#FFD166;">Expiring</div></div>
+    <div class="row" style="justify-content:space-between;padding:6px 0;"><div class="row" style="gap:8px;"><span style="font-size:16px;">📋</span><span style="font-size:12px;font-weight:600;color:#EDF0F7;">Vehicle RC</span></div><div class="pill" style="background:rgba(0,212,160,.15);color:#00D4A0;">Valid</div></div>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">👤</span><div><div class="mod-name">Profile</div><div class="mod-sub">Driver account · Documents</div></div></div>
+</div>
+
+<!-- ── 12. SETTINGS ── -->
+<div class="module">
+<div class="phone-screen">
+  <div class="screen-title">Settings</div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">App preferences</div>
+    <div class="row" style="justify-content:space-between;padding:11px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:10px;"><span style="font-size:18px;">🌐</span><span style="font-size:13px;font-weight:600;color:#EDF0F7;">Language</span></div><span style="font-size:12px;color:#4B5A72;">English ›</span></div>
+    <div class="row" style="justify-content:space-between;padding:11px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:10px;"><span style="font-size:18px;">🌙</span><span style="font-size:13px;font-weight:600;color:#EDF0F7;">Theme</span></div><span style="font-size:12px;color:#4B5A72;">Dark ›</span></div>
+    <div class="row" style="justify-content:space-between;padding:11px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:10px;"><span style="font-size:18px;">🔔</span><span style="font-size:13px;font-weight:600;color:#EDF0F7;">Notifications</span></div><div style="width:42px;height:22px;background:#00D4A0;border-radius:11px;padding:2px;display:flex;align-items:center;justify-content:flex-end;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;"></div></div></div>
+    <div class="row" style="justify-content:space-between;padding:11px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:10px;"><span style="font-size:18px;">📍</span><span style="font-size:13px;font-weight:600;color:#EDF0F7;">Location Access</span></div><div style="width:42px;height:22px;background:#00D4A0;border-radius:11px;padding:2px;display:flex;align-items:center;justify-content:flex-end;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;"></div></div></div>
+    <div class="row" style="justify-content:space-between;padding:11px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:10px;"><span style="font-size:18px;">🚨</span><span style="font-size:13px;font-weight:600;color:#EDF0F7;">Auto SOS</span></div><div style="width:42px;height:22px;background:#FF4D6A;border-radius:11px;padding:2px;display:flex;align-items:center;justify-content:flex-end;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;"></div></div></div>
+    <div class="row" style="justify-content:space-between;padding:11px 0;"><div class="row" style="gap:10px;"><span style="font-size:18px;">🔐</span><span style="font-size:13px;font-weight:600;color:#EDF0F7;">Security</span></div><span style="font-size:12px;color:#4B5A72;">PIN + OTP ›</span></div>
+  </div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:#8896AD;margin-bottom:8px;">Emergency contacts</div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #1A2540;"><div class="row" style="gap:8px;"><span style="font-size:18px;">🏢</span><div><div style="font-size:12px;font-weight:600;color:#EDF0F7;">Admin Control</div><div style="font-size:10px;color:#4B5A72;">+91 98765 43210</div></div></div><div style="width:32px;height:32px;border-radius:50%;background:rgba(0,212,160,.15);display:flex;align-items:center;justify-content:center;font-size:14px;">📞</div></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;"><div class="row" style="gap:8px;"><span style="font-size:18px;">👨‍👩‍👦</span><div><div style="font-size:12px;font-weight:600;color:#EDF0F7;">Family</div><div style="font-size:10px;color:#4B5A72;">+91 87654 32109</div></div></div><div style="width:32px;height:32px;border-radius:50%;background:rgba(0,212,160,.15);display:flex;align-items:center;justify-content:center;font-size:14px;">📞</div></div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,77,106,.1);border:1px solid rgba(255,77,106,.35);border-radius:10px;padding:13px;">
+    <span style="font-size:18px;">🚪</span><span style="font-size:13px;font-weight:700;color:#FF4D6A;">Sign Out</span>
+  </div>
+</div>
+<div class="module-footer"><span style="font-size:22px;">⚙️</span><div><div class="mod-name">Settings</div><div class="mod-sub">Preferences · Contacts</div></div></div>
+</div>
+
+</div>

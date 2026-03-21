@@ -109,6 +109,23 @@ export function setupLocationTracking(io: SocketServer): void {
       trackingNs.to('admins').emit('location:update', locationEvent);
       trackingNs.to(`trip:${payload.tripId}`).emit('location:update', locationEvent);
 
+      // ── PERSIST GPS DATA TO POSTGRES ──
+      try {
+        await prisma.locationLog.create({
+          data: {
+            tripId: payload.tripId,
+            latitude: payload.latitude,
+            longitude: payload.longitude,
+            speed: payload.speed || 0,
+            heading: payload.heading || null,
+            altitude: null,
+            timestamp: payload.timestamp ? new Date(payload.timestamp) : new Date(),
+          }
+        });
+      } catch (error) {
+        logger.error(`[Tracking Engine] Failed to sync GPS point to database for Trip ${payload.tripId}:`, error);
+      }
+
       logger.debug(
         `Location update - Trip ${payload.tripId}: ${payload.latitude},${payload.longitude} @ ${payload.speed}km/h`
       );
