@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load .env from project root
-dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
+// Load .env from backend root
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 function requireEnv(key: string, defaultValue?: string): string {
   const value = process.env[key] ?? defaultValue;

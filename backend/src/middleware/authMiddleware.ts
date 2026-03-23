@@ -11,6 +11,8 @@ export interface AuthRequest extends Request {
     role: Role;
     name: string;
   };
+  adminId?: string;
+  driverId?: string;
 }
 
 export const authenticate = async (
@@ -36,6 +38,16 @@ export const authenticate = async (
     }
 
     req.user = user;
+
+    // Enrich request with profile IDs for downstream use
+    if (user.role === Role.ADMIN || user.role === Role.SUPER_ADMIN) {
+      const admin = await prisma.admin.findUnique({ where: { userId: user.id } });
+      (req as AuthRequest).adminId = admin?.id ?? undefined;
+    } else if (user.role === Role.DRIVER) {
+      const driver = await prisma.driver.findUnique({ where: { userId: user.id } });
+      (req as AuthRequest).driverId = driver?.id ?? undefined;
+    }
+
     next();
   } catch {
     return next(new AuthError('Invalid or expired token'));
